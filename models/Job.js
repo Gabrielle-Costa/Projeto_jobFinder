@@ -1,9 +1,13 @@
+//model para acessar as informações do banco
 const Sequelize = require('sequelize');
-const db = require('../db/conection');
+const db = require('../db/connection');
 const sequelize = require('../db/connection');
 
 const Job = db.define('job', {
     title:{
+        type: Sequelize.STRING,
+    },
+    description:{
         type: Sequelize.STRING,
     },
     salary:{
