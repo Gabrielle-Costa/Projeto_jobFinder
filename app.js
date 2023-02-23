@@ -17,8 +17,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //handle bars
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
+//arquivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
 
 //conexão com o bando de dados
 db.authenticate()
@@ -29,7 +32,7 @@ db.authenticate()
 
 //rotas
 app.get('/', (req, res) => {
-    res.send("Está funcionando");
+    res.render('index');
 });
 
 //jobs routes
